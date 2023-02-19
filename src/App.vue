@@ -32,9 +32,9 @@ export default {
     // fetchData(API_URL_HEADLINE)
     
     watchEffect(() => {
-      let API_URL_HEADLINE = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.VUE_APP_API_KEY}`
+      let API_URL_HEADLINE = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.API_KEY}`
       // let API_URL_CATEGORY = `https://newsapi.org/v2/top-headlines/sources?country=us&category=${store.state.category}&apiKey=${process.env.VUE_APP_API_KEY}`
-      let API_URL_SEARCH = `https://newsapi.org/v2/everything?q=${store.state.search_query}&apiKey=${process.env.VUE_APP_API_KEY}`
+      let API_URL_SEARCH = `https://newsapi.org/v2/everything?q=${store.state.search_query}&apiKey=${process.env.API_KEY}`
 
       if(store.state.search_query !== "") {
         fetchData(API_URL_SEARCH)
