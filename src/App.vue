@@ -14,6 +14,8 @@ export default {
   name: 'App',
   components: { Navbar, Footer },
   setup() {
+
+    // allows the store to be shared with all components
     provide('store', store)
 
     const fetchData = async (URL) => {
