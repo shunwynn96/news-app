@@ -17,7 +17,6 @@ export default {
   components: { Card, Search },
   setup() {
     const store = inject('store')
-    
     // resets category selection variable when home page is visited again.
     store.methods.updateCategory("")
 

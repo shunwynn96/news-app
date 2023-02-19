@@ -1,5 +1,7 @@
 <template>
+  
   <div class="category-container">
+    <Search />
     <h1 class="category-title">{{ category }}<span> News</span></h1>
     <Card/>
   </div>
@@ -9,10 +11,11 @@
 import { inject , ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import Card from '../components/Card.vue'
+import Search from '../components/Search.vue'
 
 export default {
   name: "Catagory",
-  components: { Card },
+  components: { Card, Search },
   setup() {
     const category = ref("");
     // connecting component to store.js
