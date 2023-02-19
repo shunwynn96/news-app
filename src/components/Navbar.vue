@@ -1,26 +1,26 @@
 <template>
   <div class="navbar-background">
     <div class="navbar-container">
-      <router-link class="navbar-title" :to="{ name: 'Home' }"><h1>THE NEWS</h1></router-link>
+      <router-link class="navbar-title" :to="{ name: 'Home' }" @click="clearAll"><h1>THE NEWS</h1></router-link>
       <div class="navbar-links">
-        <router-link :to="{ name: 'Home' }">Home</router-link>
+        <router-link :to="{ name: 'Home' }"  @click="clearAll">Home</router-link>
 
 
-        <div class="dropdown">
+        <!-- <div class="dropdown">
           <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Catagory
           </button>
           <ul class="dropdown-menu">
-            <li><router-link class="dropdown-item" :to="{ name: 'Category', params: { category: 'general' }}">General</router-link></li>
-            <li><router-link class="dropdown-item" :to="{ name: 'Category', params: { category: 'business' }}">Business</router-link></li>
-            <li><router-link class="dropdown-item" :to="{ name: 'Category', params: { category: 'entertainment' }}">Entertainment</router-link></li>
-            <li><router-link class="dropdown-item" :to="{ name: 'Category', params: { category: 'health' }}">Health</router-link></li>
-            <li><router-link class="dropdown-item" :to="{ name: 'Category', params: { category: 'science' }}">Science</router-link></li>
-            <li><router-link class="dropdown-item" :to="{ name: 'Category', params: { category: 'sports' }}">Sports</router-link></li>
-            <li><router-link class="dropdown-item" :to="{ name: 'Category', params: { category: 'technology' }}">Technology</router-link></li>
+            <li><router-link @click="clearAll" class="dropdown-item" :to="{ name: 'Category', params: { category: 'general' }}">General</router-link></li>
+            <li><router-link @click="clearAll" class="dropdown-item" :to="{ name: 'Category', params: { category: 'business' }}">Business</router-link></li>
+            <li><router-link @click="clearAll" class="dropdown-item" :to="{ name: 'Category', params: { category: 'entertainment' }}">Entertainment</router-link></li>
+            <li><router-link @click="clearAll" class="dropdown-item" :to="{ name: 'Category', params: { category: 'health' }}">Health</router-link></li>
+            <li><router-link @click="clearAll" class="dropdown-item" :to="{ name: 'Category', params: { category: 'science' }}">Science</router-link></li>
+            <li><router-link @click="clearAll" class="dropdown-item" :to="{ name: 'Category', params: { category: 'sports' }}">Sports</router-link></li>
+            <li><router-link @click="clearAll" class="dropdown-item" :to="{ name: 'Category', params: { category: 'technology' }}">Technology</router-link></li>
             
           </ul>
-        </div>
+        </div> -->
         <router-link :to="{ name: 'ContactUs' }">Contact Us</router-link>
       </div>
     </div>
@@ -28,9 +28,18 @@
 </template>
 
 <script>
+import { inject } from 'vue' 
+
 export default {
   name: 'Navbar',
   setup() {
+    const store = inject('store')
+
+    const clearAll = () => {
+      store.methods.updateSearchQuery("")
+      store.methods.updateCategory("")
+    }
+  return { clearAll }
   }
 }
 </script>
@@ -65,7 +74,7 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 0.7rem 3rem 0 0;
-  width: 300px;
+  width: 200px;
   color: white;
 }
 

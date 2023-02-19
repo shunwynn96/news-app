@@ -27,23 +27,37 @@ export default {
         console.log(err)
       }
     }
+    // fetchData(API_URL_HEADLINE)
     
     watchEffect(() => {
       let API_URL_HEADLINE = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.VUE_APP_API_KEY}`
+      // let API_URL_CATEGORY = `https://newsapi.org/v2/top-headlines/sources?country=us&category=${store.state.category}&apiKey=${process.env.VUE_APP_API_KEY}`
+      let API_URL_SEARCH = `https://newsapi.org/v2/everything?q=${store.state.search_query}&apiKey=${process.env.VUE_APP_API_KEY}`
 
-
-      // For testing
-      let API_URL_CATEGORY_LOCAL = `http://localhost:3000/${store.state.category}`
-      let API_URL_HEADLINE_LOCAL = 'http://localhost:3000/articles'
-
-
-
-      if(!store.state.category) {
-        fetchData(API_URL_HEADLINE_LOCAL)
-      } else {
-        fetchData(API_URL_CATEGORY_LOCAL)
+      if(store.state.search_query !== "") {
+        fetchData(API_URL_SEARCH)
       }
-      console.log("WATCH EFFECT RAN!")
+      // else if(store.state.category !== "") {
+      //   fetchData(API_URL_CATEGORY)
+      // } 
+      else {
+        fetchData(API_URL_HEADLINE)
+      }
+      
+     
+      // For testing
+      // let API_URL_HEADLINE_LOCAL = 'http://localhost:3000/articles'
+      // let API_URL_CATEGORY_LOCAL = `http://localhost:3000/${store.state.category}`
+      // let API_URL_SEARCH_LOCAL = `http://localhost:3000/${store.state.search_query}`
+
+      // if(store.state.search_query !== "") {
+      //   fetchData(API_URL_SEARCH_LOCAL)
+      // }
+      // else if(store.state.category !== "") {
+      //   fetchData(API_URL_CATEGORY_LOCAL)
+      // } else {
+      //   fetchData(API_URL_HEADLINE_LOCAL)
+      // }
     })
 
   }

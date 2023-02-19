@@ -1,6 +1,6 @@
 <template>
   <div class="trending-container">
-      <div class="trending" v-for="(article, i) in store.state.articles" :key="i">
+      <div class="trending" v-for="(article, i) in store.state.articles.articles" :key="i">
         <div class="image-box">
           <a v-if="!article.urlToImage" :href="article.url" target="_blank">
             <img src="../assets/no-image.jpg" />
