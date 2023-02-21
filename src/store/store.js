@@ -10,7 +10,6 @@ const state = reactive({
 const methods = {
   updateArticles(newArticles) {
     state.articles = newArticles;
-    console.log(state.articles);
   },
   updateCategory(newCategory) {
     state.category = newCategory;
