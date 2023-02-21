@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-// import Category from "../views/Category.vue";
+import Category from "../views/Category.vue";
 import ContactUs from "../views/ContactUs.vue";
 import SearchView from "../views/SearchView.vue";
 
@@ -11,11 +11,11 @@ const routes = [
     component: Home,
     props: true,
   },
-  // {
-  //   path: "/:category",
-  //   name: "Category",
-  //   component: Category,
-  // },
+  {
+    path: "/:category",
+    name: "Category",
+    component: Category,
+  },
   {
     path: "/contact-us",
     name: "ContactUs",

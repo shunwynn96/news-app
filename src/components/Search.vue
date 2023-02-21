@@ -26,9 +26,16 @@ export default {
     const query = ref()
 
     const querySubmit = () => {
+
+      // clears category selection to prevent interference with API logic in App.vue
+      store.methods.updateCategory("")
+
       // navigates to SearchView
       router.push({ name: 'SearchView'})
+
+      // updating search_query state with new search values
       store.methods.updateSearchQuery(query.value)
+
       //Clears search box after submitting
       query.value = ""
     }

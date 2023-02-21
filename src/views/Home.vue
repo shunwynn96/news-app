@@ -1,7 +1,7 @@
 <template>
-  <div class="home-container">
+  <div class="home-container dark-bg">
     <Search/>
-    <h1 class="home-title">Top <span>Headlines</span></h1>
+    <h1 class="home-title dark-primary-text">Top <span class="split-text dark-secondary-text">Headlines</span></h1>
     <Card/>
   </div>
 
@@ -41,7 +41,7 @@ export default {
   border-bottom: 3px solid #dc3545; 
 }
 
-.home-title span {
+.split-text {
   color: #dc3545;
 }
 

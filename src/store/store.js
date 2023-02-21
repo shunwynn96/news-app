@@ -4,6 +4,7 @@ const state = reactive({
   articles: [],
   category: "",
   search_query: "",
+  dark_mode: false,
 });
 
 const methods = {
