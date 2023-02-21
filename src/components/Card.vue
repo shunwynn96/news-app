@@ -2,11 +2,11 @@
   <div class="trending-container">
       <div class="trending" v-for="(article, i) in store.state.articles.articles" :key="i">
         <div class="image-box">
-          <a v-if="!article.urlToImage" :href="article.url" target="_blank">
+          <a v-if="!article.image" :href="article.url" target="_blank">
             <img src="../assets/no-image.jpg" />
           </a>
           <a v-else :href="article.url" target="_blank">
-            <img :src="article.urlToImage" :alt="article.source.name"/>
+            <img :src="article.image" :alt="article.source.name"/>
           </a>
         </div>
         

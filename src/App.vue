@@ -25,6 +25,7 @@ export default {
           throw Error(`Oops, something went wrong`)
         }
         store.methods.updateArticles(await data.json())
+        console.log(data)
       } catch (err) {
         console.log(err)
       }
@@ -34,26 +35,29 @@ export default {
     watchEffect(() => {
       let API_URL_HEADLINE = ""
       let API_URL_SEARCH = ""
+      API_URL_HEADLINE = `https://gnews.io/api/v4/top-headlines?category=general&apikey=${process.env.VUE_APP_GNEWS}`
+      
+      // if(process.env.API_KEY) {
 
-      if(process.env.API_KEY) {
-        API_URL_HEADLINE = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.API_KEY}`
-        // let API_URL_CATEGORY = `https://newsapi.org/v2/top-headlines/sources?country=us&category=${store.state.category}&apiKey=${process.env.API_KEY}`
-        API_URL_SEARCH = `https://newsapi.org/v2/everything?q=${store.state.search_query}&apiKey=${process.env.API_KEY}`
-      } else {
-        API_URL_HEADLINE = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.VUE_APP_API_KEY}`
-        // let API_URL_CATEGORY = `https://newsapi.org/v2/top-headlines/sources?country=us&category=${store.state.category}&apiKey=${process.env.VUE_APP_API_KEY}`
-        API_URL_SEARCH = `https://newsapi.org/v2/everything?q=${store.state.search_query}&apiKey=${process.env.VUE_APP_API_KEY}`
-      }
+      //   API_URL_HEADLINE = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.API_KEY}`
+      //   // // let API_URL_CATEGORY = `https://newsapi.org/v2/top-headlines/sources?country=us&category=${store.state.category}&apiKey=${process.env.API_KEY}`
+      //   API_URL_SEARCH = `https://newsapi.org/v2/everything?q=${store.state.search_query}&apiKey=${process.env.API_KEY}`
+      // } else {
+      //   API_URL_HEADLINE = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.VUE_APP_API_KEY}`
+      //   // // let API_URL_CATEGORY = `https://newsapi.org/v2/top-headlines/sources?country=us&category=${store.state.category}&apiKey=${process.env.VUE_APP_API_KEY}`
+      //   API_URL_SEARCH = `https://newsapi.org/v2/everything?q=${store.state.search_query}&apiKey=${process.env.VUE_APP_API_KEY}`
+      // }
+      fetchData(API_URL_HEADLINE)
 
-      if(store.state.search_query !== "") {
-        fetchData(API_URL_SEARCH)
-      }
-      // else if(store.state.category !== "") {
-      //   fetchData(API_URL_CATEGORY)
-      // } 
-      else {
-        fetchData(API_URL_HEADLINE)
-      }
+      // if(store.state.search_query !== "") {
+      //   fetchData(API_URL_SEARCH)
+      // }
+      // // else if(store.state.category !== "") {
+      // //   fetchData(API_URL_CATEGORY)
+      // // } 
+      // else {
+      //   fetchData(API_URL_HEADLINE)
+      // }
       
      
       // For testing
