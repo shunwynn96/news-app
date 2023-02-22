@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { watchEffect, provide, ref } from 'vue'
+import { watchEffect, provide, ref, onMounted } from 'vue'
 import store from "./store/store.js"
 import Footer from './components/Footer.vue'
 import Navbar from './components/Navbar.vue'
@@ -16,7 +16,7 @@ export default {
   setup() {
     // allows the store to be shared with all components
     provide('store', store)
-
+    
     let key_list = ["VUE_APP_GNEWS_0", "VUE_APP_GNEWS_1", "VUE_APP_GNEWS_2", "VUE_APP_GNEWS_3"]
     let key_num = ref(0)
 
@@ -56,8 +56,10 @@ export default {
         fetchData(API_URL_HEADLINE)
       }
       
+      // For testing
+      // let API_URL_LOCAL = `http://localhost:3000/articles`
+      // fetchData(API_URL_LOCAL)
     })
-
   }
 }
 </script>
@@ -66,8 +68,30 @@ export default {
 * {
   font-family: "Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   margin: 0;
+  
 }
 
+body {
+  background-color: var(--bg-1);
+}
 
+:root {
+  --bg-1: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #818181;
+  --color-1: #ff4444;
+  --color-2: #dc3545;
+  --color-3: #818181;
+  --toggle-size: 4rem;
+}
+
+:root.dark-theme {
+  --bg-1: #181818;
+  --text-primary: #ffffff;
+  --text-secondary: #B3B3B3;
+  --color-1: #282828;
+  --color-2: #404040;
+  --color-3: #818181;
+}
 
 </style>

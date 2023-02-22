@@ -37,6 +37,6 @@ export default {
   margin: 0 1rem;
   font-size: 1.8em;
   padding-bottom: 0.5rem;
-  border-bottom: 3px solid #dc3545; 
+  border-bottom: 3px solid var(--color-2); 
 }
 </style>

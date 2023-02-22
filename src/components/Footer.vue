@@ -19,7 +19,7 @@ export default {
 
 .footer-container {
   height: 50px;
-  background-color: #ff4444;
+  background-color: var(--color-1);
 }
 
 .footer-copyright {

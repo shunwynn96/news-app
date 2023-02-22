@@ -1,6 +1,6 @@
 <template>
   <div class="trending-container">
-      <div class="trending" v-for="(article, i) in store.state.articles.articles" :key="i">
+      <div class="trending" v-for="(article, i) in store.state.articles" :key="i">
         <div class="image-box">
           <a v-if="!article.image" :href="article.url" target="_blank">
             <img src="../assets/no-image.jpg" />
@@ -66,7 +66,7 @@ export default {
 }
 
 .trending button {
-  background-color: #dc3545;
+  background-color: var(--color-2);
   color: white;
   cursor: pointer;
   font-weight: 700;
@@ -86,11 +86,11 @@ export default {
 
 .trending-title a {
   text-decoration: none;
-  color: black;
+  color: var(--text-primary);
 }
 
 .trending-title a:hover {
-  color: #dc3545;
+  color: var(--color-2);
 }
 
 .trending-name {
@@ -100,8 +100,9 @@ export default {
 
 .trending-date {
   margin-top: 0.5rem;
+  margin-bottom: 0;
   font-size: 13px;
-  color: #888;
+  color: var(--color-3);
 }
 
 .image-box {
@@ -124,9 +125,10 @@ export default {
 }
 
 .trending-descript {
+  color: var(--text-secondary);
   padding: 0.5rem 0;
-  border-top: 2px solid #888;
-  border-bottom: 1px solid #888;
+  border-top: 2px solid var(--color-3);
+  border-bottom: 1px solid var(--color-3);
 }
 
 /* TRENDING SECTION */
