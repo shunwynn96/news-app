@@ -1,5 +1,6 @@
 <template>
   <div class="search-view-container">
+    <ThemeSwitch />
     <Search />
     <h1 class="search-view-title">Search result</h1>
     <Card />
@@ -10,10 +11,11 @@
 import { inject } from 'vue'
 import Card from '../components/Card.vue'
 import Search from '../components/Search.vue'
+import ThemeSwitch from '../components/ThemeSwitch.vue'
 
 export default {
   name: 'SearchView',
-  components: { Card, Search },
+  components: { Card, Search, ThemeSwitch },
   setup() {
     const store = inject('store')
 
@@ -34,8 +36,10 @@ export default {
 }
 
 .search-view-title {
+  color: var(--text-primary);
   margin: 0 1rem;
   font-size: 1.8em;
+  font-weight: 400;
   padding-bottom: 0.5rem;
   border-bottom: 3px solid var(--color-2); 
 }

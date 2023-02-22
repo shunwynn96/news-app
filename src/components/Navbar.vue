@@ -1,34 +1,27 @@
 <template>
   <div class="navbar-background dark-menu-bar">
-    <div class="navbar-container">
+    <nav class="navbar-container">
       <router-link class="navbar-title" :to="{ name: 'Home' }" @click="clearAll"><h1>THE NEWS</h1></router-link>
+      <NavHamburger />
+
       <div class="navbar-links">
         <router-link :to="{ name: 'Home' }"  @click="clearAll">Home</router-link>
-
-
-        <div class="dropdown">
-          <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Catagory
-          </button>
-          <ul class="dropdown-menu">
-            <li><router-link @click="clearSearch" class="dropdown-item" :to="{ name: 'Category', params: { category: 'business' }}">Business</router-link></li>
-            <li><router-link @click="clearSearch" class="dropdown-item" :to="{ name: 'Category', params: { category: 'entertainment' }}">Entertainment</router-link></li>
-            <li><router-link @click="clearSearch" class="dropdown-item" :to="{ name: 'Category', params: { category: 'health' }}">Health</router-link></li>
-            <li><router-link @click="clearSearch" class="dropdown-item" :to="{ name: 'Category', params: { category: 'science' }}">Science</router-link></li>
-            <li><router-link @click="clearSearch" class="dropdown-item" :to="{ name: 'Category', params: { category: 'sports' }}">Sports</router-link></li>
-          </ul>
-        </div>
+        <Dropdown />
         <router-link :to="{ name: 'ContactUs' }">Contact Us</router-link>
       </div>
-    </div>
+    </nav>
   </div>
 </template>
 
 <script>
 import { inject } from 'vue' 
+import NavHamburger from './NavHamburger.vue'
+import Dropdown from './Dropdown.vue'
+
 
 export default {
   name: 'Navbar',
+  components: { NavHamburger, Dropdown },
   setup() {
     const store = inject('store')
 
@@ -58,17 +51,15 @@ export default {
   height: 50px;
   max-width: 1920px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-title {
-  display: flex;
-  align-items: center;
   text-decoration: none;
 }
 
 .navbar-title h1 {
   font-size: 1.5em;
-  /* padding: 0.6rem 0 0 3rem; */
   margin: 0 0 0 1rem;
   color: white;
   font-weight: 700;
@@ -77,40 +68,23 @@ export default {
 
 .navbar-links {
   display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
   color: white;
+  width: 250px;
+  padding-right: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 540px) {
+  .navbar-links {
+    display: none;
+  }
 }
 
 .navbar-links a {
-  padding: 0 1rem 0;
   text-decoration: none;
   color: white;
   font-weight: 500;
 }
-
-
-/* Override Boostrap Styles */
-
-
-.dropdown button {
-  padding: 0 1rem 0;
-  background-color: var(--color-1);
-  color: white;
-  border: none;
-  font-weight: 500;
-}
-
-.dropdown-menu {
-  inset: 21px auto auto 0px !important;
-  background-color: var(--bg-1) !important;
-}
-
-.dropdown-menu a {
-  padding: 0.5rem 1rem;
-  color: var(--text-primary);
-}
-
-/* Override Boostrap Styles */
 
 </style>

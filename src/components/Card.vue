@@ -1,6 +1,6 @@
 <template>
-  <div class="trending-container">
-      <div class="trending" v-for="(article, i) in store.state.articles" :key="i">
+  <div class="article-container">
+      <div class="article" v-for="(article, i) in store.state.articles.articles" :key="i">
         <div class="image-box">
           <a v-if="!article.image" :href="article.url" target="_blank">
             <img src="../assets/no-image.jpg" />
@@ -10,13 +10,13 @@
           </a>
         </div>
         
-        <h3 class="trending-title"><a :href="article.url" target="_blank">{{ article.title }}</a></h3>
-        <p class="trending-date">{{ store.methods.formatDate(article.publishedAt) }}</p>
+        <h3 class="article-title"><a :href="article.url" target="_blank">{{ article.title }}</a></h3>
+        <p class="article-date">{{ formatDate(article.publishedAt) }}</p>
         
         <button v-if="!article.description" class="read-more-btn">
           Read more
         </button>
-        <p v-else class="trending-descript">{{ article.description }}</p>
+        <p v-else class="article-descript">{{ article.description }}</p>
       </div>
     </div>
 </template>
@@ -29,47 +29,51 @@ export default {
   setup() {
     const store = inject('store');
 
-    return { store }
+    const formatDate = (date) => {
+      return date.replace("T", " ").slice(0, 19);
+    }
+
+    return { store, formatDate }
   }
 }
 </script>
 
 <style>
 
-/* TRENDING SECTION */
+/* article SECTION */
 
-.trending-container {
+.article-container {
   display: grid;
   grid-template-columns: repeat(4, 25%);
 }
 
 @media screen and (max-width: 1400px) {
-  .trending-container {
+  .article-container {
     grid-template-columns: repeat(3, 33.3333%);
   }
 }
 
 @media screen and (max-width: 980px) {
-  .trending-container {
+  .article-container {
     grid-template-columns: repeat(2, 50%);
   }
 }
 
 @media screen and (max-width: 540px) {
-  .trending-container {
+  .article-container {
     grid-template-columns: 1fr;
   }
 }
 
-.trending {
+.article {
   padding: 1rem;
 }
 
-.trending button {
+.article button {
   background-color: var(--color-2);
   color: white;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 16px;
   letter-spacing: 2px;
   margin-top: 0.5rem;
@@ -78,27 +82,23 @@ export default {
   border-radius: 5px;
 }
 
-.trending-title {
-  font-size: 17px;
-  height: 50px;
+.article-title {
+  font-size: 16px;
+  font-weight: 500;
+  /* max-height: 80px; */
   margin-bottom: 1rem;
 }
 
-.trending-title a {
+.article-title a {
   text-decoration: none;
   color: var(--text-primary);
 }
 
-.trending-title a:hover {
+.article-title a:hover {
   color: var(--color-2);
 }
 
-.trending-name {
-  margin: 0.5rem 0;
-  font-size: 15px;
-}
-
-.trending-date {
+.article-date {
   margin-top: 0.5rem;
   margin-bottom: 0;
   font-size: 13px;
@@ -124,13 +124,14 @@ export default {
   opacity: 0.8;
 }
 
-.trending-descript {
+.article-descript {
   color: var(--text-secondary);
+  font-size: 13px;
   padding: 0.5rem 0;
   border-top: 2px solid var(--color-3);
   border-bottom: 1px solid var(--color-3);
 }
 
-/* TRENDING SECTION */
+/* article SECTION */
 
 </style>

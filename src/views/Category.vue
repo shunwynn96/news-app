@@ -1,6 +1,7 @@
 <template>
   <div class="category-bg">
     <div class="category-container">
+      <ThemeSwitch />
       <Search />
       <h1 class="category-title">{{ category }}<span> News</span></h1>
       <Card/>
@@ -13,10 +14,11 @@ import { inject , ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import Card from '../components/Card.vue'
 import Search from '../components/Search.vue'
+import ThemeSwitch from '../components/ThemeSwitch.vue'
 
 export default {
   name: "Catagory",
-  components: { Card, Search },
+  components: { Card, Search, ThemeSwitch },
   setup() {
     const category = ref("");
     // connecting component to store.js
@@ -54,9 +56,11 @@ export default {
 }
 
 .category-title {
+  color: var(--text-primary);
   text-transform: capitalize;
   margin: 0 1rem;
   font-size: 1.8em;
+  font-weight: 400;
   padding-bottom: 0.5rem;
   border-bottom: 3px solid var(--color-2); 
 }

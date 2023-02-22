@@ -49,6 +49,7 @@ export default {
   margin: 0 1rem;
   color: var(--text-primary);
   font-size: 1.8em;
+  font-weight: 400;
   padding-bottom: 0.5rem;
   border-bottom: 3px solid var(--color-2);
 }

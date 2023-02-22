@@ -1,8 +1,15 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import VueClickAway from "vue3-click-away";
+// import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
-createApp(App).use(router).mount("#app");
+const app = createApp(App);
 
-import "../node_modules/bootstrap/dist/js/bootstrap.js";
+app.use(router);
+app.use(VueClickAway);
+app.mount("#app");
+
+// createApp(App).use(router).mount("#app");
+
+// import "../node_modules/bootstrap/dist/js/bootstrap.js";
