@@ -16,9 +16,6 @@ const methods = {
   updateSearchQuery(newSearchQuery) {
     state.search_query = newSearchQuery;
   },
-  formatDate(date) {
-    return date.replace("T", " ").slice(0, 19);
-  },
 };
 
 export default {

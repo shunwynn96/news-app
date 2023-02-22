@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { watchEffect, provide, ref, onMounted } from 'vue'
+import { watchEffect, provide, ref } from 'vue'
 import store from "./store/store.js"
 import Footer from './components/Footer.vue'
 import Navbar from './components/Navbar.vue'
@@ -32,7 +32,7 @@ export default {
         } else if (!data.ok) {
           throw Error(`Oops, something went wrong`)
         }
-
+        
         store.methods.updateArticles(await data.json())
       } catch (err) {
         console.log(err)

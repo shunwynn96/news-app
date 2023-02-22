@@ -18,50 +18,45 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
-  mounted() {
-    const initUserTheme = this.getTheme() || this.getMediaPreference();
-    this.setTheme(initUserTheme);
-  },
-
-  data() {
-    return {
-      userTheme: "light-theme",
-    };
-  },
-
-  methods: {
-    toggleTheme() {
-      const activeTheme = localStorage.getItem("user-theme");
+  name: "ThemeSwitch",
+  setup(){
+    let userTheme = ref("light-theme")
+    
+    const toggleTheme = () => {
+      const activeTheme = localStorage.getItem("user-theme")
       if (activeTheme === "light-theme") {
-        this.setTheme("dark-theme");
+        setTheme("dark-theme")
       } else {
-        this.setTheme("light-theme");
+        setTheme("light-theme")
       }
-    },
+    }
 
-    getTheme() {
-      return localStorage.getItem("user-theme");
-    },
+    const getTheme = () => {
+      return localStorage.getItem("user-theme")
+    }
 
-    setTheme(theme) {
-      localStorage.setItem("user-theme", theme);
-      this.userTheme = theme;
-      document.documentElement.className = theme;
-    },
+    const setTheme = (theme) => {
+      localStorage.setItem("user-theme", theme)
+      userTheme.value = theme
+      document.documentElement.className = theme
+    }
 
-    getMediaPreference() {
-      const hasDarkPreference = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      if (hasDarkPreference) {
-        return "dark-theme";
-      } else {
-        return "light-theme";
-      }
-    },
-  },
-};
+    const getMediaPreference = () => {
+      const systemDefault = window.matchMedia("(preferes-color-scheme: dark)")
+      .matches ? "dark-theme" : "light-theme"
+      return systemDefault
+    }
+
+    const initUserTheme = getTheme() || getMediaPreference();
+    setTheme(initUserTheme)
+  
+
+    return { userTheme, toggleTheme }
+  }
+}
 </script>
 
 <style>
@@ -92,12 +87,12 @@ export default {
   border-radius: var(--toggle-size);
   cursor: pointer;
   display: flex;
-  height: calc(var(--toggle-size) * 0.55);
   position: relative;
   padding: calc(var(--toggle-size) * 0.1);
   transition: background 0.5s ease;
   justify-content: space-between;
-  width: var(--toggle-size);
+  height: calc(var(--toggle-size) * 0.35);
+  width: calc(var(--toggle-size) * 0.8);
   z-index: 1;
 }
 
