@@ -2,7 +2,12 @@
   <div class="search-container">
     <div class="search-box-bg">
      
-      <input @keypress.enter="querySubmit" class="search-box" v-model="query"/>
+      <input 
+        @keypress.enter="querySubmit" 
+        class="search-box" 
+        v-model="query" 
+        placeholder="Search...."
+      />
   
       <div class="search-btn-container" @click="querySubmit">
         <i class="fas fa-search search-btn"></i>
@@ -51,7 +56,7 @@ export default {
   display: flex;
   margin:0 1rem 2rem;
   border-radius: 5px;
-  background-color: #dc3545;
+  background-color: var(--color-2);
   padding: 0.3rem;
 }
 
@@ -60,7 +65,15 @@ export default {
   height: 40px;
   border: none;
   border-radius: 5px 0px 0px 5px;
-  background-color: rgb(232, 232, 232);
+  background-color: var(--bg-1);
+}
+
+.search-box::placeholder {
+  padding-left: 1rem;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 3px;
 }
 
 .search-btn-container {

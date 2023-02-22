@@ -1,9 +1,10 @@
 <template>
-  
-  <div class="category-container">
-    <Search />
-    <h1 class="category-title">{{ category }}<span> News</span></h1>
-    <Card/>
+  <div class="category-bg">
+    <div class="category-container">
+      <Search />
+      <h1 class="category-title">{{ category }}<span> News</span></h1>
+      <Card/>
+    </div>
   </div>
 </template>
 
@@ -38,7 +39,13 @@ export default {
 
 <style>
 
+/* max view width color */
+.category-bg {
+  background-color: var(--bg-1);
+}
+
 .category-container {
+  background-color: var(--bg-1);
   margin: auto;
   padding: 1rem;
   max-width: 1920px;
@@ -51,11 +58,11 @@ export default {
   margin: 0 1rem;
   font-size: 1.8em;
   padding-bottom: 0.5rem;
-  border-bottom: 3px solid #dc3545; 
+  border-bottom: 3px solid var(--color-2); 
 }
 
 .category-title span {
-  color: #dc3545;
+  color: var(--color-2);
 }
 
 </style>

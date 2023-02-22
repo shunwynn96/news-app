@@ -48,24 +48,28 @@ export default {
 <style>
 
 .navbar-background {
-  background-color: #ff4444;
+  background-color: var(--color-1);
   height: 50px;
 }
 
 .navbar-container {
   margin: auto;
   display: flex;
+  height: 50px;
   max-width: 1920px;
   justify-content: space-between;
 }
 
 .navbar-title {
+  display: flex;
+  align-items: center;
   text-decoration: none;
 }
 
 .navbar-title h1 {
   font-size: 1.5em;
-  padding: 0.6rem 0 0 3rem;
+  /* padding: 0.6rem 0 0 3rem; */
+  margin: 0 0 0 1rem;
   color: white;
   font-weight: 700;
   letter-spacing: 2px;
@@ -73,13 +77,13 @@ export default {
 
 .navbar-links {
   display: flex;
-  justify-content: space-between;
-  padding: 0.7rem 3rem 0 0;
-  width: 300px;
+  /* justify-content: space-between; */
+  align-items: center;
   color: white;
 }
 
 .navbar-links a {
+  padding: 0 1rem 0;
   text-decoration: none;
   color: white;
   font-weight: 500;
@@ -87,25 +91,26 @@ export default {
 
 
 /* Override Boostrap Styles */
-.navbar-links button {
-  background-color: transparent;
+
+
+.dropdown button {
+  padding: 0 1rem 0;
+  background-color: var(--color-1);
   color: white;
   border: none;
-  margin: 0;
   font-weight: 500;
-  line-height: 1px;
 }
 
 .dropdown-menu {
   inset: 21px auto auto 0px !important;
+  background-color: var(--bg-1) !important;
 }
 
 .dropdown-menu a {
-  color: black;
+  padding: 0.5rem 1rem;
+  color: var(--text-primary);
 }
 
 /* Override Boostrap Styles */
-
-
 
 </style>
