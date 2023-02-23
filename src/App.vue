@@ -32,7 +32,6 @@ export default {
         } else if (!data.ok) {
           throw Error(`Oops, something went wrong`)
         }
-        console.log(data)
         store.methods.updateArticles(await data.json())
       } catch (err) {
         console.log(err)
