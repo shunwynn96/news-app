@@ -67,6 +67,7 @@ export default {
   border-radius: 5px 0px 0px 5px;
   background-color: var(--bg-1);
   color: var(--text-primary);
+  font-size: 20px;
 }
 
 .search-box::placeholder {

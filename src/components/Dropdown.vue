@@ -1,15 +1,15 @@
 <template>
-  <div class="dropdown">
-    <button @click="toggleDropdown" v-click-away="closeDropdown">
+  <div class="dropdown" v-click-away="closeDropdown">
+    <button @click="toggleDropdown">
       Category
     </button>
     <div v-if="showDropdown" class="dropdown-content">
       <ul class="dropdown-list">
-        <li class="dropdown-item"><router-link @click="clearSearch" :to="{ name: 'Category', params: { category: 'business' }}">Business</router-link></li>
-        <li class="dropdown-item"><router-link @click="clearSearch" :to="{ name: 'Category', params: { category: 'entertainment' }}">Entertainment</router-link></li>
-        <li class="dropdown-item"><router-link @click="clearSearch" :to="{ name: 'Category', params: { category: 'health' }}">Health</router-link></li>
-        <li class="dropdown-item"><router-link @click="clearSearch" :to="{ name: 'Category', params: { category: 'science' }}">Science</router-link></li>
-        <li class="dropdown-item"><router-link @click="clearSearch" :to="{ name: 'Category', params: { category: 'sports' }}">Sports</router-link></li>
+        <li class="dropdown-item" @click="switchCategory('business')">Business</li>
+        <li class="dropdown-item" @click="switchCategory('entertainment')">Entertainment</li>
+        <li class="dropdown-item" @click="switchCategory('health')">Health</li>
+        <li class="dropdown-item" @click="switchCategory('science')">Science</li>
+        <li class="dropdown-item" @click="switchCategory('sports')">Sports</li>
       </ul>
     </div>
   </div>
@@ -17,15 +17,19 @@
 
 <script>
 import { ref, inject } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
   name: "Dropdown",
   setup() {
     const store = inject('store')
+    const router = useRouter()
     let showDropdown = ref(false)
 
-    const clearSearch = () => {
+    const switchCategory = (category) => {
       store.methods.updateSearchQuery("")
+      router.push({ name: 'Category', params: { category }})
+      showDropdown.value = false
     }
 
     const toggleDropdown = () => {
@@ -36,7 +40,7 @@ export default {
       showDropdown.value = false
     }
 
-    return { showDropdown, toggleDropdown, closeDropdown, clearSearch }
+    return { showDropdown, toggleDropdown, closeDropdown, switchCategory }
   }
 
 }
@@ -71,14 +75,13 @@ export default {
   padding: 0px;
 }
 
-
-.dropdown-item a {
-  display: block;
-  padding: 0.5rem 1rem;
+.dropdown-item {
+  color: white;
+  padding: 0.5rem;
   transition: 0.4s ease;
 }
 
-.dropdown-item a:hover {
+.dropdown-item:hover{
   cursor: pointer;
   background: lightgrey;
 	color: dimgrey;
@@ -88,11 +91,6 @@ export default {
 	.dropdown-content {
     left: -151px;
     top: 0px;
-  }
-
-  .dropdown-item a {
-    text-decoration: none;
-    color: white;
   }
 
   .dropdown button {

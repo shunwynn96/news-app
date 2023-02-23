@@ -55,10 +55,6 @@ export default {
       else {
         fetchData(API_URL_HEADLINE)
       }
-      
-      // For testing
-      // let API_URL_LOCAL = `http://localhost:3000/articles`
-      // fetchData(API_URL_LOCAL)
     })
   }
 }
