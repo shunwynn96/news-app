@@ -32,7 +32,7 @@ export default {
   name: "NavHamburger",
 	components: { Dropdown },
   setup() {
-    let showNav = ref(true)
+    let showNav = ref(false)
 
 		// from vue3-click-away plugin.
 		// Closes hamburger menu when clicking outside
