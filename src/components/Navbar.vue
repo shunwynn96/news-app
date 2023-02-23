@@ -24,16 +24,12 @@ export default {
   components: { NavHamburger, Dropdown },
   setup() {
     const store = inject('store')
-
-    const clearSearch = () => {
-      store.methods.updateSearchQuery("")
-    }
     
     const clearAll = () => {
       store.methods.updateSearchQuery("")
       store.methods.updateCategory("")
     }
-  return { clearAll, clearSearch }
+  return { clearAll }
   }
 }
 </script>

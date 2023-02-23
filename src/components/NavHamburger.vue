@@ -1,5 +1,5 @@
 <template>
-  <div id="sidemenu" v-click-away="onClickAway">
+  <div id="sidemenu" v-click-away="closeNav">
     <button class="sidemenu-btn" @click="toggleNav" :class="showNav ? 'active' : null">
 				<span class="top"></span>
 				<span class="mid"></span>
@@ -32,11 +32,11 @@ export default {
   name: "NavHamburger",
 	components: { Dropdown },
   setup() {
-    let showNav = ref(false)
+    let showNav = ref(true)
 
 		// from vue3-click-away plugin.
 		// Closes hamburger menu when clicking outside
-		const onClickAway = () => {
+		const closeNav = () => {
 			showNav.value = false
 		}
 
@@ -44,7 +44,7 @@ export default {
       showNav.value = !showNav.value
     }
 
-    return { showNav, toggleNav, onClickAway }
+    return { showNav, toggleNav, closeNav }
   }
 }
 </script>
@@ -151,7 +151,7 @@ export default {
 	 transition: 0.2s ease;
 }
  .translateX-leave-to {
-	 transform: translateX(-200px);
+	 transform: translateX(200px);
 	 opacity: 0;
 }
  
